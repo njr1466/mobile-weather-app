@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, View, Text, Image, ScrollView } from 'react-native';
-import MiniCardHorizantal from './minicardhorizontal';
+import MiniCardHorizantal from './card3/minicardhorizontal';
 const Cardbottom = (props) => {
   return (
 
