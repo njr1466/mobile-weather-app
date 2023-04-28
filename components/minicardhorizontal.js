@@ -1,18 +1,28 @@
 import React from 'react';
 import { StyleSheet, View, Text,Image } from 'react-native';
-
+import Svg, { Path } from 'react-native-svg';
 const MiniCardHorizontal = (props) => {
   return (
  
-     <View style={{flexDirection:"collumn"}}>
-     <View style={{flexDirection:"row"}}>
-     <Text style={styles.description1}>Monday</Text> 
-     <Image
-       source={require('../assets/solnublado.png')}  
-       style={{width: 30,  height: 30, padding:22,margin:6}} 
+     <View style={{flex:1,flexDirection:"row", justifyContent:"center"}}>
+     
+     <View style={{flex:1,flexDirection:"row",alignItems:"center"}}>
+     <Text style={styles.description1}>{props.day}</Text> 
+    </View>
+
+    <View style={{flex:1,flexDirection:"row",alignItems:"center"}}>
+    <Image
+       source={require('../assets/'+props.condition+'.png')}  
+       style={{width: 30,  height: 30, margintop:2 , padding:25,margin:12}} 
    />
-   <Text style={styles.description2}>20º - 29º</Text> 
-     </View>
+   
+    </View>
+    <View style={{flex:1,flexDirection:"row",alignItems:"center"}}>
+    <Text style={styles.description2}>{props.min}º - {props.max}º</Text> 
+    </View>
+     
+   
+    
      </View>
    
   );
@@ -27,7 +37,6 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.2,
     shadowRadius: 1,
     padding: 5,
-
     width:330,
     height:180
   },
@@ -38,19 +47,21 @@ const styles = StyleSheet.create({
   },
   description: {
     fontSize: 18,
-    paddingRight:50,
+    paddingRight:30,
+    paddingLeft:0,
     paddingTop:0,
     color:'#ffffff'
   },
   description1: {
     fontSize: 18,
     paddingRight:60,
+    paddingLeft:2,
     paddingTop:20,
     color:'#ffffff'
   },
   description2: {
     fontSize: 18,
-    paddingLeft:50,
+    paddingLeft:20,
     paddingTop:20,
     color:'#ffffff'
   }

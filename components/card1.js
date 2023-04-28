@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, Text } from 'react-native';
+import { StyleSheet, View, Text, ScrollView } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { FontAwesome5 } from '@expo/vector-icons'; 
 import { Feather } from '@expo/vector-icons'; 
@@ -7,6 +7,7 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 const CardTop = (props) => {
   return (
+   
     <View style={styles.card}>
      
      <View style={{flex:1, flexDirection:"row"}}>
@@ -30,6 +31,7 @@ const CardTop = (props) => {
       
       
     </View>
+   
   );
 };
 
@@ -37,10 +39,6 @@ const styles = StyleSheet.create({
   card: {
     backgroundColor: '#104084',
     borderRadius: 16,
-    shadowColor: '#ffffff',
-    shadowOffset: { width: 0, height: 1 },
-    shadowOpacity: 0.3,
-    shadowRadius: 1,
     padding: 10,
     marginHorizontal: 16,
     marginVertical: 8,
@@ -49,7 +47,7 @@ const styles = StyleSheet.create({
     alignContent:"center",
     alignItems:"center",
     flexDirection:"row",
-    flex:1
+ 
     
     
   },

@@ -1,18 +1,30 @@
 import React from 'react';
-import { StyleSheet, View, Text,Image } from 'react-native';
+import { StyleSheet, View, Text, Image, ScrollView } from 'react-native';
 import MiniCardHorizantal from './minicardhorizontal';
 const Cardbottom = (props) => {
   return (
-    <View style={styles.card}>
-      <View style={{flexDirection:"row"}}>
-         <Text style={styles.description}>NextForecast</Text>
-         <Text style={styles.description}>Mar,30</Text>
-     </View>
-     <MiniCardHorizantal></MiniCardHorizantal>
-     <MiniCardHorizantal></MiniCardHorizantal>
-     <MiniCardHorizantal></MiniCardHorizantal>
 
-    </View>
+    <ScrollView>
+      <View style={styles.card}>
+        <View style={{ flex: 1, flexDirection: "row" }}>
+          <Text style={styles.description}>NextForecast</Text>
+          <Text style={styles.description}>Mar,30</Text>
+        </View>
+       
+
+
+{props.data.map((nome, index) => {
+        if (index != 0) {
+          return (
+            <MiniCardHorizantal day={nome.weekday} max={nome.max} min={nome.min} condition={nome.condition}></MiniCardHorizantal>
+          );
+        }
+        return null;
+      })} 
+
+
+      </View>
+    </ScrollView>
   );
 };
 
@@ -28,8 +40,10 @@ const styles = StyleSheet.create({
     padding: 10,
     marginHorizontal: 16,
     marginVertical: 2,
-    width:330,
-    height:200
+    width: 330,
+    flex: 1,
+
+
   },
   title: {
     fontSize: 18,
@@ -38,23 +52,23 @@ const styles = StyleSheet.create({
   },
   description: {
     fontSize: 18,
-    paddingRight:130,
-    paddingTop:0,
-    color:'#ffffff',
-    
+    paddingRight: 130,
+    paddingTop: 0,
+    color: '#ffffff',
+
   },
   description1: {
     fontSize: 18,
-    paddingRight:56,
-    paddingTop:20,
-    color:'#ffffff',
-    
+    paddingRight: 56,
+    paddingTop: 20,
+    color: '#ffffff',
+
   },
   description2: {
     fontSize: 20,
-    paddingLeft:49,
-    paddingTop:20,
-    color:'#ffffff'
+    paddingLeft: 49,
+    paddingTop: 20,
+    color: '#ffffff'
   }
 });
 

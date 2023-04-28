@@ -5,16 +5,16 @@ const CardMiddle = (props) => {
   return (
     <View style={styles.card}>
     
-     <View style={{flexDirection:"row"}}>
+     <View style={{flex:1,flexDirection:"row"}}>
          <Text style={styles.description}>Today</Text>
-         <Text style={styles.description}>Mar,30</Text>
+         <Text style={styles.description}>{props.day}</Text>
      </View>
      <View style={{flexDirection:"row"}}>
      <View style={{flexDirection:"row"}}>
          <MiniCard description='26' imagem="sol.png" hour="15:00"></MiniCard>
-         <MiniCard description='28' imagem="solnublado.png" hour="16:00"></MiniCard>
+         <MiniCard description='28' imagem="clear_day.png" hour="16:00"></MiniCard>
          <MiniCard description='29' imagem="chuva.png" hour="17:00"></MiniCard>
-         <MiniCard description='30' imagem="solnublado.png" hour="18:00"></MiniCard>
+         <MiniCard description='30' imagem="clear_day.png" hour="18:00"></MiniCard>
      
      </View>
      </View>
@@ -50,8 +50,10 @@ const styles = StyleSheet.create({
   },
   description: {
     fontSize: 18,
-    paddingRight:200,
-    color:'#ffffff'
+    paddingRight:180,
+    color:'#ffffff',
+    marginRight:20
+  
   },
 });
 

@@ -1,11 +1,23 @@
-import React from 'react';
+import React,{useState} from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { Ionicons } from '@expo/vector-icons'; 
 import { MaterialCommunityIcons } from '@expo/vector-icons'; 
-import { AntDesign } from '@expo/vector-icons'; 
+import { AntDesign } from '@expo/vector-icons';
+import { TextInput,  Modal, TouchableOpacity } from 'react-native'; 
+import { SearchBar } from 'react-native-elements';
+
+
+
 const CardTop = (props) => {
+
+const [search, setSearch] = useState();
+
+
   return (
+
+
+
     <View style={styles.card}>
      
 
@@ -27,8 +39,7 @@ const styles = StyleSheet.create({
     marginVertical: 8,
     width:330,
     textAlign:"center",
-    alignContent:"center",
-    alignItems:"center",
+    paddingTop:25,
     flexDirection:"row"
     
     
