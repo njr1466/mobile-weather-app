@@ -5,44 +5,26 @@ import { Ionicons } from '@expo/vector-icons';
 import CardTop from '../../components/card1/card1';
 import CardMiddle from '../../components/card2/card2';
 import CardBottom from '../../components/card3/card3';
+import MainCard from '../../components/maincard/maincard';
 import Header from '../../components/header/header';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
-import axios from 'axios';
+import { getResults, getTodayResults, getType } from '../api/api';
+import { getImage,getDatetoName } from '../utils/utils';
 import { SearchBar, Image } from 'react-native-elements';
 import styles from './styles';
-import {
-  parseISO, isAfter,
-  format,
-  formatRelative,
-  formatDistance
-} from 'date-fns';
+
 
 
 export default function App() {
 
-  const [data, setData] = useState();
-  const [temp, setTemp] = useState();
+  const [results, setResults] = useState([]);
   const [date, setDate] = useState();
-  const [time, setTime] = useState();
-  const [sunrise, setSunrise] = useState();
-  const [sunset, setSunset] = useState();
-  const [description, setDescription] = useState();
-  const [currently, setCurrently] = useState();
-  const [city, setCity] = useState();
-  const [humidity, setHumidity] = useState();
+  const [image,setImage] = useState();
+  const [today, setToday] = useState([]);
   const [forecast, setForecast] = useState([]);
-  const [windspeedy, setWindspeedy] = useState();
   const [search, setSearch] = useState('Gramado');
   const [refresh, setrefresh] = useState();
   const [visible, setVisible] = useState(true);
-
-  const datetoName = (data) => {
-    const dat = data.substr(6, 4) + '-' + data.substr(3, 2) + '-' + data.substr(0, 2);
-    const firstDate = parseISO(dat);
-    const month = format(firstDate, "MMM");
-    const day = format(firstDate, "d");
-    setDate(month + ',' + day);
-  };
+  const [light, setLight] = useState(true);
 
   const handleCancel = () => {
     if (visible) {
@@ -57,46 +39,32 @@ export default function App() {
   };
 
   useEffect(() => {
+      getResults(search).then((response) => {
+      setResults(response);
+      setForecast(response.forecast);
+      setDate(getDatetoName(response.date));
+    });
 
-    async function getWeather() {
-      await axios.get('https://api.hgbrasil.com/weather?key=SUA-CHAVE&city_name=' + search)
-        .then(function (response) {
-          // handle success
-          setData(response.data);
-          setTemp(response.data.results.temp);
-          setDescription(response.data.results.description);
-          setHumidity(response.data.results.humidity);
-          setWindspeedy(response.data.results.wind_speedy);
-          setForecast(response.data.results.forecast);
-          setCity(response.data.results.city);
-          datetoName(response.data.results.date);
-          setSunrise(response.data.results.sunrise);
-          setSunset(response.data.results.sunset);
-        })
-        .catch(function (error) {
-          // handle error
-          console.log(error);
-        })
-        .finally(function () {
-          // always executed
-        });
 
-    }
+    getTodayResults(search).then((response) => {
+      setToday(response);
+      setImage(getImage(response.condition));
+    });
 
-    getWeather();
+  
+   
 
   }, [refresh])
 
 
-
+   const colors = (results.currently == "dia") ? ['rgba(0,0,0,1)','#69daf5', '#69daf5'] : ['rgba(0,0,0,1)','#134CB5', '#134CB5']
 
   return (
     <ScrollView>
-      <View style={styles.container}>
+      <View style={styles.container}  >
         <LinearGradient
-          // Background Linear Gradient
-          colors={['rgba(0,0,0,1)', 'transparent']}
-          style={styles.background}
+          colors={colors}
+          
         />
 
         {!visible && (
@@ -120,64 +88,9 @@ export default function App() {
           </TouchableOpacity>
         )}
 
-        {forecast.map((item, index) => {
-          if (index === 0) {
-            switch (item.condition) {
-              case "rain":
-                var imagem = require('../../assets/rain.png');
-                break;
-              case "cloud":
-                var imagem = require('../../assets/cloud.png');
-                break;
-              case "clear_day":
-                var imagem = require('../../assets/clear_day.png');
-                break;
-              case "clear_night":
-                var imagem = require('../../assets/clear_night.png');
-                break;
-              case "cloudly_day":
-                var imagem = require('../../assets/cloudly_day.png');
-                break;
-              case "cloudly_night":
-                var imagem = require('../../assets/cloudly_night.png');
-                break;
-              case "snow":
-                var imagem = require('../../assets/snow.png');
-                break;
-              case "fog":
-                var imagem = require('../../assets/fog.png');
-                break;
-              case "hail":
-                var imagem = require('../../assets/hail.png');
-                break;
-              case "storm":
-                var imagem = require('../../assets/storm.png');
-                break;
-
-              default:
-                var imagem = require('../../assets/cloudly_day.png');
-                break;
-            }
-            return (
-              <View style={{ alignItems: 'center', justifyContent: 'center' }}>
-                <Image
-                  source={imagem}
-                  style={{ width: 180, height: 180 }}
-                />
-
-                <Text style={{ fontSize: 80, color: "#ffffff" }}>{temp}º</Text>
-                <Text style={{ fontSize: 18, color: "#ffffff" }}>{item.description}</Text>
-                <Text style={{ fontSize: 18, color: "#ffffff" }}>Max: {item.max} º  Min: {item.min}º </Text>
-              </View>
-            );
-          }
-          return null;
-        })}
-
-        <View ></View>
-
-        <CardTop description="90%" humidity={humidity} windspeedy={windspeedy}></CardTop>
-        <CardMiddle day={date} sunrise={sunrise} sunset={sunset}></CardMiddle>
+        <MainCard image={image} temp={results.temp} today={today}> </MainCard>
+        <CardTop description="90%" humidity={results.humidity} windspeedy={results.wind_speedy}></CardTop>
+        <CardMiddle day={date} sunrise={results.sunrise} sunset={results.sunset}></CardMiddle>
         <CardBottom data={forecast} ></CardBottom>
 
       </View>

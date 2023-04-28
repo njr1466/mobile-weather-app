@@ -12,7 +12,7 @@ const styles = StyleSheet.create({
       alignItems: 'center',
       justifyContent: 'center',
       height: 200,
-      backgroundColor: '#ffffff',
+      backgroundColor: '#69daf5',
     },
     background: {
       position: 'absolute',

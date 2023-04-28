@@ -29,7 +29,7 @@ const MiniCard = (props) => {
 
 const styles = StyleSheet.create({
   card: {
-    backgroundColor: '#104084',
+  
     borderRadius: 16,
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.2,
