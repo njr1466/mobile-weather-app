@@ -19,6 +19,6 @@ yarn ou npm install
 Inicie o projeto
 
 ```bash
-npx expo start
+npx expo start ou npm start
 ```
 
