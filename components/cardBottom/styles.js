@@ -10,10 +10,11 @@ const styles = StyleSheet.create({
       shadowOpacity: 0.2,
       shadowRadius: 1,
       padding: 10,
-      marginHorizontal: 16,
+      marginHorizontal: 17,
       marginVertical: 2,
       width: 370,
       flex: 1,
+     
   
   
     },
@@ -24,7 +25,7 @@ const styles = StyleSheet.create({
     },
     description: {
       fontSize: 18,
-      paddingRight: 180,
+      paddingRight: 170,
       paddingLeft:10,
       paddingTop: 0,
       color: '#ffffff',

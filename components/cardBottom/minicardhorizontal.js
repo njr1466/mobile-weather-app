@@ -52,7 +52,7 @@ const MiniCardHorizontal = (props) => {
         <Text  style={styles.description1}>{props.day}</Text>
       </View>
 
-      <View style={{ flex: 1, flexDirection: "row", alignItems: "center", paddingLeft:10 }}>
+      <View style={{ flex: 1, flexDirection: "row", alignItems: "center", paddingLeft:14 }}>
         <Image
           source={imagem}
           style={{ width: 40, height: 40,  margin: 12 }}

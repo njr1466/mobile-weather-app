@@ -17,7 +17,7 @@ const CardMiddle = (props) => {
          <Text style={styles.description}>{props.day}</Text>
      </View>
      <View style={{flexDirection:"row"}}>
-     <View style={{flexDirection:"row", marginLeft:35}}>
+     <View style={{flexDirection:"row", marginLeft:35, alignItems:"center"}}>
          <MiniCard description='sunrise' imagem="sunrise" hour={props.sunrise}></MiniCard>
          <MiniCard description='sunset' imagem="sunset" hour={props.sunset}></MiniCard>
      </View>
