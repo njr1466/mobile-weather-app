@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { StyleSheet, TouchableOpacity, Text, View, ScrollView, ActivityIndicator } from 'react-native';
+import { StyleSheet, TouchableOpacity, Text, View, ScrollView, Modal, ActivityIndicator, FlatList } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { Ionicons } from '@expo/vector-icons';
 import CardTop from '../../components/cardTop/cardTop';
@@ -7,12 +7,12 @@ import CardMiddle from '../../components/cardMiddle/cardMiddle';
 import CardBottom from '../../components/cardBottom/cardBottom';
 import MainCard from '../../components/maincard/maincard';
 import Header from '../../components/header/header';
-import { getResults, getTodayResults, getColor } from '../api/api';
+import { getResults, getTodayResults, getColor, getCitySearch } from '../api/api';
 import { getImage, getDatetoName } from '../utils/utils';
-import { SearchBar, Image } from 'react-native-elements';
+import { SearchBar, Image, Divider } from 'react-native-elements';
 import styles from './styles';
 
-export default function App() {
+export default function App({ }) {
 
   const [results, setResults] = useState([]);
   const [date, setDate] = useState();
@@ -20,11 +20,44 @@ export default function App() {
   const [today, setToday] = useState([]);
   const [forecast, setForecast] = useState([]);
   const [search, setSearch] = useState('Gramado');
+  const [searchText, setSearchText] = useState('');
   const [refresh, setrefresh] = useState();
   const [visible, setVisible] = useState(true);
+  const [visibleModal, setVisibleModal] = useState(false);
   const [colorCard, setColorCard] = useState();
   const [colorBack, setColorBack] = useState();
   const [loading, setLoading] = useState(true);
+  const [filteredCidades, setFilteredCidades] = useState([]);
+  const [city, setCity] = useState([]);
+
+
+  const cidades = [
+    { id: 1, nome: 'São Paulo' },
+    { id: 2, nome: 'Rio de Janeiro' },
+    { id: 3, nome: 'Belo Horizonte' },
+    { id: 4, nome: 'Curitiba' },
+    { id: 5, nome: 'Porto Alegre' },
+    { id: 6, nome: 'Brasília' },
+    { id: 7, nome: 'Salvador' },
+    { id: 8, nome: 'Fortaleza' },
+    { id: 9, nome: 'Recife' },
+    { id: 10, nome: 'Manaus' },
+  ];
+
+  const handleSearch1 = (text) => {
+    const filtered = city.filter((cidade) =>
+      cidade.nome.toLowerCase().includes(text.toLowerCase())
+    );
+    setFilteredCidades(filtered);
+    setSearchText(text);
+  };
+
+  const onClose = (cidade) => {
+    setVisibleModal(false);
+    setSearch(cidade.nome+"-"+cidade.microrregiao.mesorregiao.UF.sigla);
+    setSearchText('');
+    setrefresh(Math.random);
+  }
 
   const handleCancel = () => {
     setSearch('');
@@ -37,14 +70,20 @@ export default function App() {
     } else {
       setVisible(true);
     }
+    setVisibleModal(true);
+    setFilteredCidades('');
   };
 
   const handleSearch = () => {
-    if (visible) {
-      setVisible(false);
+    if (visibleModal) {
+      setVisibleModal(false);
     } else {
-      setVisible(true);
+      setVisibleModal(true);
     }
+    if(searchText != ""){
+      setSearch(searchText);
+    }
+    setSearchText('');
     setrefresh(Math.random);
   };
 
@@ -67,6 +106,13 @@ export default function App() {
 
     });
 
+    getCitySearch(search).then((response) => { 
+     setCity(response);
+    });
+
+
+
+
   }, [refresh])
 
   return (
@@ -80,26 +126,47 @@ export default function App() {
             colors={['rgba(0,0,0,1)', 'transparent']}
           />
 
-          {!visible && (
+
+          <Modal
+            animationType="slide"
+            visible={visibleModal}
+            onRequestClose={onClose}
+          >
             <View style={{ width: '100%' }}>
+
               <SearchBar
                 placeholder="Procure uma cidade..."
-                value={search}
-                onChangeText={text => setSearch(text)}
+                value={searchText}
+                onChangeText={handleSearch1}
                 containerStyle={{ backgroundColor: 'transparent', borderBottomColor: 'transparent', borderTopColor: 'transparent', padding: 40 }}
                 inputContainerStyle={{ backgroundColor: '#fff' }}
                 searchIcon={{ color: '#000' }}
                 clearIcon={{ color: '#000', onPress: handleCancel }}
                 onSubmitEditing={handleSearch}
+                autoFocus={true}
               />
-            </View>
-          )}
 
-          {visible && (
-            <TouchableOpacity onPress={handleOpen}>
-              <Header city={search}></Header>
-            </TouchableOpacity>
-          )}
+              <FlatList
+                data={filteredCidades}
+                keyExtractor={(item) => item.id.toString()}
+                renderItem={({ item }) => (
+                  <TouchableOpacity onPress={() => onClose(item)}>
+                    <Text style={{ padding: 10, fontSize: 18, color:'gray' }}>{item.nome} - {item.microrregiao.mesorregiao.UF.sigla}</Text>
+                    <Divider style={{ backgroundColor: '#ebe2e1' }} />
+                    
+                  </TouchableOpacity>
+                )}
+              />
+
+            </View>
+          </Modal>
+
+
+
+          <TouchableOpacity onPress={handleOpen}>
+            <Header city={search}></Header>
+          </TouchableOpacity>
+
 
           <MainCard image={image} temp={results.temp} today={today} > </MainCard>
           <CardTop results={results} color={colorCard} today={today}></CardTop>

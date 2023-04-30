@@ -28,6 +28,11 @@ export const getColor = async (city) => {
     
 }
 
+export const getCitySearch= async (city) => {
+    const { data } = await instance.get('https://servicodados.ibge.gov.br/api/v1/localidades/municipios?orderBy=nome');
+    return data;
+    
+}
 
 
 export const getColorBackground = async () => {
