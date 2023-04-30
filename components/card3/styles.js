@@ -1,11 +1,9 @@
 import { StyleSheet } from 'react-native';
 
 
-
 const styles = StyleSheet.create({
     card: {
-      backgroundColor: '#104084',
-      borderRadius: 25,
+      borderRadius: 29,
       elevation: 3,
       shadowColor: '#ffffff',
       shadowOffset: { width: 0, height: 2 },
@@ -29,7 +27,7 @@ const styles = StyleSheet.create({
       paddingRight: 170,
       paddingTop: 0,
       color: '#ffffff',
-  
+      fontWeight: 'bold',
     },
     description1: {
       fontSize: 18,

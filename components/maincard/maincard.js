@@ -10,7 +10,7 @@ const MainCard = (props) => {
           style={{ width: 180, height: 180 }}
         />
 
-      <Text style={{ fontSize: 80, color: "#ffffff" }}>{props.temp}º</Text>
+      <Text style={{ fontSize: 80, color: "#ffffff",fontWeight:"bold" }}>{props.temp}º</Text>
 
         <Text style={{ fontSize: 18, color: "#ffffff" }}>{props.today.description}</Text>
         <Text style={{ fontSize: 18, color: "#ffffff" }}>Max: {props.today.max} º  Min: {props.today.min}º </Text> 

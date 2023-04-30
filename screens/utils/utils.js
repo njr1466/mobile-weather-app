@@ -50,3 +50,10 @@ export const getImage =  (image) => {
     const day = format(firstDate, "d");
     return(month + ',' + day);
   };
+
+
+
+  export const getColor =  () => {
+    
+    return "#104084";
+  }

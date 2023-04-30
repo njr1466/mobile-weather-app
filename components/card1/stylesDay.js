@@ -1,9 +1,13 @@
 import { StyleSheet } from 'react-native';
+import {getColor} from '../../screens/api/api';
+import {getColorCard} from '../../screens/api/api';
+
+
 
 const styles = StyleSheet.create({
     card: {
      
-      borderRadius: 30,
+      borderRadius: 29,
       padding: 10,
       marginHorizontal: 16,
       marginVertical: 8,
@@ -12,7 +16,7 @@ const styles = StyleSheet.create({
       alignContent:"center",
       alignItems:"center",
       flexDirection:"row",
-      paddingTop:20,
+   
       
       
     },
@@ -22,9 +26,8 @@ const styles = StyleSheet.create({
     },
     description: {
       fontSize: 16,
-      padding:1,
+      padding:2,
       paddingRight:1,
-      paddingBottom:8,
       fontWeight:"bold",
       justifyContent:"center",
       color:"#ffffff"

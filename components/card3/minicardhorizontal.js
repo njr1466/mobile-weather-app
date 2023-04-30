@@ -52,10 +52,10 @@ const MiniCardHorizontal = (props) => {
         <Text style={styles.description1}>{props.day}</Text>
       </View>
 
-      <View style={{ flex: 1, flexDirection: "row", alignItems: "center" }}>
+      <View style={{ flex: 1, flexDirection: "row", alignItems: "center", paddingLeft:10 }}>
         <Image
           source={imagem}
-          style={{ width: 30, height: 30, margintop: 2, padding: 25, margin: 12 }}
+          style={{ width: 40, height: 40,  margin: 12 }}
         />
 
       </View>
@@ -90,21 +90,18 @@ const styles = StyleSheet.create({
   description: {
     fontSize: 18,
     paddingRight: 30,
-    paddingLeft: 0,
-    paddingTop: 0,
     color: '#ffffff'
   },
   description1: {
     fontSize: 18,
-    paddingRight: 60,
+    paddingRight: 70,
     paddingLeft: 2,
-    paddingTop: 20,
     color: '#ffffff'
   },
   description2: {
     fontSize: 18,
     paddingLeft: 20,
-    paddingTop: 20,
+    paddingTop: 0,
     color: '#ffffff'
   }
 });

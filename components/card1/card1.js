@@ -1,15 +1,21 @@
-import React from 'react';
+import React,{useState} from 'react';
 import { StyleSheet, View, Text, ScrollView } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { FontAwesome5 } from '@expo/vector-icons'; 
 import { Feather } from '@expo/vector-icons'; 
 import { MaterialCommunityIcons } from '@expo/vector-icons'; 
+import styles from './stylesDay' ;
+import {getColor} from '../../screens/api/api';
+
+
 
 const CardTop = (props) => {
+
+var color =  props.color;
+
   return (
    
-    <View style={styles.card}>
-     
+    <View style={[styles.card, {backgroundColor:color}]}  >
      <View style={{flex:1, flexDirection:"row"}}>
      <MaterialCommunityIcons name="grain" size={20} color="#ffffff"  style={styles.description}>
       </MaterialCommunityIcons>
@@ -26,45 +32,12 @@ const CardTop = (props) => {
       <Text style={styles.description}>{props.windspeedy}</Text>
       
       </View>
-      
-      
-      
-      
+
     </View>
    
   );
 };
 
-const styles = StyleSheet.create({
-  card: {
-    backgroundColor: '#104084',
-    borderRadius: 16,
-    padding: 10,
-    marginHorizontal: 16,
-    marginVertical: 8,
-    width:330,
-    textAlign:"center",
-    alignContent:"center",
-    alignItems:"center",
-    flexDirection:"row",
- 
-    
-    
-  },
-  title: {
-    fontSize: 18,
-    marginBottom: 8,
-  },
-  description: {
-    fontSize: 16,
-    padding:2,
-    paddingRight:1,
-    fontWeight:"bold",
-    justifyContent:"center",
-    color:"#ffffff"
-    
-    
-  },
-});
+
 
 export default CardTop;
