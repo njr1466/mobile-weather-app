@@ -12,7 +12,7 @@ const styles = StyleSheet.create({
       padding: 10,
       marginHorizontal: 16,
       marginVertical: 2,
-      width: 330,
+      width: 370,
       flex: 1,
   
   
@@ -24,14 +24,15 @@ const styles = StyleSheet.create({
     },
     description: {
       fontSize: 18,
-      paddingRight: 170,
+      paddingRight: 180,
+      paddingLeft:10,
       paddingTop: 0,
       color: '#ffffff',
       fontWeight: 'bold',
     },
     description1: {
       fontSize: 18,
-      paddingRight: 56,
+      paddingRight: 59,
       paddingTop: 20,
       color: '#ffffff',
   

@@ -10,9 +10,9 @@ const styles = StyleSheet.create({
       shadowOpacity: 0.2,
       shadowRadius: 0,
       padding: 10,
-      marginHorizontal: 16,
+      marginHorizontal: 14,
       marginVertical: 10,
-      width:330,
+      width:'90%',
       height:200,
     },
     title: {
@@ -24,6 +24,7 @@ const styles = StyleSheet.create({
       fontSize: 18,
       fontWeight:"bold",
       paddingRight:180,
+      paddingLeft:10,
       color:'#ffffff',
       marginRight:20
     

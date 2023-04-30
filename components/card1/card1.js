@@ -22,9 +22,9 @@ var color =  props.color;
       <Text style={styles.description}>{props.humidity}%</Text>
       </View>
 
-      <View style={{flex:1, flexDirection:"row"}}>
+      <View style={{flex:1, flexDirection:"row",paddingLeft:20}}>
      <FontAwesome5 name="temperature-high" size={20} color="#ffffff"  style={styles.description}/>
-      <Text style={styles.description}>{props.description}</Text>
+      <Text style={styles.description}>{props.description}º</Text>
       </View>
 
       <View style={{flex:1, flexDirection:"row"}}>

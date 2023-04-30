@@ -18,7 +18,6 @@ const Header = (props) => {
       <Ionicons name="location-outline" size={24} color="#ffffff" />
       <Text style={styles.description}>{props.city}</Text>
       <AntDesign name="caretdown" size={20} color="#ffffff" />
-
     </View>
 
     <View >
@@ -35,7 +34,7 @@ const styles = StyleSheet.create({
     borderRadius: 16,
     padding: 10,
     marginHorizontal: 16,
-    marginVertical: 8,
+    marginVertical: 20,
     width: 330,
     textAlign: "center",
     paddingTop: 25,

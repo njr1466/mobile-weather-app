@@ -55,7 +55,7 @@ export default function App() {
 
     getColor(search).then((response) => {
       setColorCard((response === "noite") ? "#104084":"#0490BC");
-      setColorBack((response === "noite") ? "#134CB5":"#47BBE1");
+      setColorBack((response=== "noite") ? "#134CB5":"#47BBE1");
       
     });
 
@@ -92,7 +92,7 @@ export default function App() {
           )}
 
           <MainCard image={image} temp={results.temp} today={today} > </MainCard>
-          <CardTop description="90%" humidity={results.humidity} windspeedy={results.wind_speedy} color={colorCard}></CardTop>
+          <CardTop description={results.temp} humidity={results.humidity} windspeedy={results.wind_speedy} color={colorCard}></CardTop>
           <CardMiddle day={date} sunrise={results.sunrise} sunset={results.sunset} color={colorCard}></CardMiddle>
           <CardBottom data={forecast} color={colorCard}></CardBottom>
 

@@ -11,14 +11,12 @@ const styles = StyleSheet.create({
       padding: 10,
       marginHorizontal: 16,
       marginVertical: 8,
-      width:330,
+      width:"90%",
       textAlign:"center",
       alignContent:"center",
       alignItems:"center",
       flexDirection:"row",
-   
-      
-      
+
     },
     title: {
       fontSize: 18,
@@ -27,7 +25,7 @@ const styles = StyleSheet.create({
     description: {
       fontSize: 16,
       padding:2,
-      paddingRight:1,
+      paddingRight:3,
       fontWeight:"bold",
       justifyContent:"center",
       color:"#ffffff"

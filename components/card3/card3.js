@@ -20,7 +20,7 @@ const Cardbottom = (props) => {
         {props.data.map((nome, index) => {
           if (index != 0) {
             return (
-              <MiniCardHorizantal day={nome.weekday} max={nome.max} min={nome.min} condition={nome.condition}></MiniCardHorizantal>
+              <MiniCardHorizantal key={index} day={nome.weekday} max={nome.max} min={nome.min} condition={nome.condition} ></MiniCardHorizantal>
             );
           }
           return null;
