@@ -4,19 +4,12 @@ import { StyleSheet } from 'react-native';
 const styles = StyleSheet.create({
     card: {
       borderRadius: 29,
-      elevation: 3,
-      shadowColor: '#ffffff',
-      shadowOffset: { width: 0, height: 2 },
-      shadowOpacity: 0.2,
-      shadowRadius: 1,
-      padding: 10,
-      marginHorizontal: 17,
-      marginVertical: 2,
-      width: 370,
+      padding: 12,
+      marginHorizontal: 0,
+      marginVertical: 0,
+      width: "90%",
       flex: 1,
      
-  
-  
     },
     title: {
       fontSize: 18,
@@ -25,11 +18,10 @@ const styles = StyleSheet.create({
     },
     description: {
       fontSize: 18,
-      paddingRight: 170,
-      paddingLeft:10,
-      paddingTop: 0,
-      color: '#ffffff',
-      fontWeight: 'bold',
+      fontWeight:"bold",
+      paddingRight:160,
+      color:'#ffffff',
+      justifyContent: 'space-between'
     },
     description1: {
       fontSize: 18,
@@ -47,3 +39,5 @@ const styles = StyleSheet.create({
   });
 
   export default styles;
+
+

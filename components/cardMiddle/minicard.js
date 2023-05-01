@@ -35,13 +35,13 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.2,
     shadowRadius: 0,
     padding: 12,
-    marginHorizontal: 4,
+    marginHorizontal:0,
     marginVertical: 2,
     width:110,
     height:140,
     paddingTop:30,
    alignItems:"center",
-   marginLeft:21
+   marginLeft:15
   },
   title: {
     fontSize: 18,

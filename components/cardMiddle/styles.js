@@ -23,12 +23,23 @@ const styles = StyleSheet.create({
     description: {
       fontSize: 18,
       fontWeight:"bold",
-      paddingRight:180,
+      paddingRight:190,
       paddingLeft:10,
       color:'#ffffff',
-      marginRight:20
+      justifyContent: 'flex-start'
     
     },
+    description1: {
+      fontSize: 18,
+      fontWeight:"bold",
+      paddingRight:170,
+      paddingLeft:50,
+      color:'#ffffff',
+      justifyContent: 'flex-end',
+    
+    },
+
+    
   });
 
   export default styles;

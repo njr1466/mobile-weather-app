@@ -11,12 +11,13 @@ const Cardbottom = (props) => {
 
   return (
 
-    <ScrollView>
+    <ScrollView style={[styles.card, {backgroundColor:color}]}>
       <View style={[styles.card, {backgroundColor:color}]}>
-        <View style={{ flex: 1, flexDirection: "row" }}>
+        <View style={[styles.description,{ flex: 1,  flexDirection: 'row'}]}>
           <Text style={styles.description}>NextForecast</Text>
           <Entypo name="calendar" size={24} color="#ffffff" />
         </View>
+        
         {props.data.map((nome, index) => {
           if (index != 0) {
             return (
