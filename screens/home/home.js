@@ -1,15 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import { StyleSheet, TouchableOpacity, Text, View, ScrollView, Modal, ActivityIndicator, FlatList } from 'react-native';
+import { TouchableOpacity, Text, View, ScrollView, Modal, ActivityIndicator, FlatList } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
-import { Ionicons } from '@expo/vector-icons';
 import CardTop from '../../components/cardTop/cardTop';
 import CardMiddle from '../../components/cardMiddle/cardMiddle';
 import CardBottom from '../../components/cardBottom/cardBottom';
 import MainCard from '../../components/maincard/maincard';
 import Header from '../../components/header/header';
-import { getResults, getTodayResults, getColor, getCitySearch } from '../api/api';
+import { getResults, getTodayResults, getColor, getCitySearch } from '../../services/api/index';
 import { getImage, getDatetoName } from '../utils/utils';
-import { SearchBar, Image, Divider } from 'react-native-elements';
+import { SearchBar, Divider } from 'react-native-elements';
 import styles from './styles';
 
 export default function App({ }) {
@@ -30,20 +29,6 @@ export default function App({ }) {
   const [filteredCidades, setFilteredCidades] = useState([]);
   const [city, setCity] = useState([]);
 
-
-  const cidades = [
-    { id: 1, nome: 'São Paulo' },
-    { id: 2, nome: 'Rio de Janeiro' },
-    { id: 3, nome: 'Belo Horizonte' },
-    { id: 4, nome: 'Curitiba' },
-    { id: 5, nome: 'Porto Alegre' },
-    { id: 6, nome: 'Brasília' },
-    { id: 7, nome: 'Salvador' },
-    { id: 8, nome: 'Fortaleza' },
-    { id: 9, nome: 'Recife' },
-    { id: 10, nome: 'Manaus' },
-  ];
-
   const handleSearch1 = (text) => {
     const filtered = city.filter((cidade) =>
       cidade.nome.toLowerCase().includes(text.toLowerCase())
@@ -54,7 +39,7 @@ export default function App({ }) {
 
   const onClose = (cidade) => {
     setVisibleModal(false);
-    setSearch(cidade.nome+"-"+cidade.microrregiao.mesorregiao.UF.sigla);
+    setSearch(cidade.nome + "-" + cidade.microrregiao.mesorregiao.UF.sigla);
     setSearchText('');
     setrefresh(Math.random);
   }
@@ -80,7 +65,7 @@ export default function App({ }) {
     } else {
       setVisibleModal(true);
     }
-    if(searchText != ""){
+    if (searchText != "") {
       setSearch(searchText);
     }
     setSearchText('');
@@ -103,22 +88,18 @@ export default function App({ }) {
     getColor(search).then((response) => {
       setColorCard((response === "noite") ? "#104084" : "#0490BC");
       setColorBack((response === "noite") ? "#134CB5" : "#47BBE1");
-
     });
 
-    getCitySearch(search).then((response) => { 
-     setCity(response);
+    getCitySearch(search).then((response) => {
+      setCity(response);
     });
-
-
-
 
   }, [refresh])
 
   return (
     <ScrollView>
       {loading ?
-        <View >
+        <View style={styles.loading}>
           <ActivityIndicator size="large" color="#0000ff" />
         </View> :
         <View style={[styles.container, { backgroundColor: colorBack }]}  >
@@ -126,19 +107,17 @@ export default function App({ }) {
             colors={['rgba(0,0,0,1)', 'transparent']}
           />
 
-
           <Modal
             animationType="slide"
             visible={visibleModal}
             onRequestClose={onClose}
           >
             <View style={{ width: '100%' }}>
-
               <SearchBar
                 placeholder="Procure uma cidade..."
                 value={searchText}
                 onChangeText={handleSearch1}
-                containerStyle={{ backgroundColor: 'transparent', borderBottomColor: 'transparent', borderTopColor: 'transparent', padding: 40 }}
+                containerStyle={styles.searchBar}
                 inputContainerStyle={{ backgroundColor: '#fff' }}
                 searchIcon={{ color: '#000' }}
                 clearIcon={{ color: '#000', onPress: handleCancel }}
@@ -151,26 +130,20 @@ export default function App({ }) {
                 keyExtractor={(item) => item.id.toString()}
                 renderItem={({ item }) => (
                   <TouchableOpacity onPress={() => onClose(item)}>
-                    <Text style={{ padding: 10, fontSize: 18, color:'gray' }}>{item.nome} - {item.microrregiao.mesorregiao.UF.sigla}</Text>
+                    <Text style={styles.flatList}>{item.nome} - {item.microrregiao.mesorregiao.UF.sigla}</Text>
                     <Divider style={{ backgroundColor: '#ebe2e1' }} />
-                    
                   </TouchableOpacity>
                 )}
               />
-
             </View>
           </Modal>
-
-
 
           <TouchableOpacity onPress={handleOpen}>
             <Header city={search}></Header>
           </TouchableOpacity>
-
-
           <MainCard image={image} temp={results.temp} today={today} > </MainCard>
           <CardTop results={results} color={colorCard} today={today}></CardTop>
-          <CardMiddle day={date} sunrise={results.sunrise} sunset={results.sunset} color={colorCard}></CardMiddle>
+          <CardMiddle day={date} sunresults={results}  color={colorCard}></CardMiddle>
           <CardBottom data={forecast} color={colorCard}></CardBottom>
 
         </View>

@@ -4,7 +4,7 @@ import { StyleSheet } from 'react-native';
 const styles = StyleSheet.create({
     card: {
       borderRadius: 29,
-      padding: 12,
+      paddingTop: 10,
       marginHorizontal: 0,
       marginVertical: 0,
       width: "90%",
@@ -17,18 +17,19 @@ const styles = StyleSheet.create({
       marginBottom: 8,
     },
     description: {
-      fontSize: 18,
-      fontWeight:"bold",
-      paddingRight:160,
+      fontSize: 19,
+      textAlign: "left",
+      fontWeight: 'bold', 
+      paddingLeft: 30,
       color:'#ffffff',
-      justifyContent: 'space-between'
     },
     description1: {
-      fontSize: 18,
-      paddingRight: 59,
-      paddingTop: 20,
-      color: '#ffffff',
-  
+      fontSize: 19,
+      textAlign: "right", 
+      fontWeight: 'bold',
+      paddingLeft: 20,
+      color:'#ffffff',
+    
     },
     description2: {
       fontSize: 20,

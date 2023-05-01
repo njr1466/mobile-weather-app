@@ -27,9 +27,31 @@ const styles = StyleSheet.create({
       fontWeight:"bold",
       justifyContent:"center",
       color:"#ffffff"
-      
-      
     },
+    description1: {
+      fontSize: 19,
+      textAlign: "left",
+      fontWeight: 'bold', 
+      paddingLeft: 15,
+      color:'#ffffff',
+    },
+    description2: {
+      fontSize: 19,
+      textAlign: "center", 
+      fontWeight: 'bold',
+      paddingRight: 15,
+      color:'#ffffff',
+    
+    },
+    description3: {
+      fontSize: 19,
+      textAlign: "right", 
+      fontWeight: 'bold',
+      paddingRight: 0,
+      color:'#ffffff',
+    
+    }
+
   });
 
   export default styles;

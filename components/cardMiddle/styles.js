@@ -21,21 +21,18 @@ const styles = StyleSheet.create({
       marginBottom: 8,
     },
     description: {
-      fontSize: 18,
-      fontWeight:"bold",
-      paddingRight:190,
-      paddingLeft:10,
+      fontSize: 19,
+      textAlign: "left",
+      fontWeight: 'bold', 
+      paddingLeft: 15,
       color:'#ffffff',
-      justifyContent: 'flex-start'
-    
     },
     description1: {
-      fontSize: 18,
-      fontWeight:"bold",
-      paddingRight:170,
-      paddingLeft:50,
+      fontSize: 19,
+      textAlign: "right", 
+      fontWeight: 'bold',
+      paddingRight: 15,
       color:'#ffffff',
-      justifyContent: 'flex-end',
     
     },
 
