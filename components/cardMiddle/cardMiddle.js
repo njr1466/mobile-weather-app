@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text } from 'react-native';
 import styles from './styles';
-import MiniCard from './miniCard';
+import MiniCard from './minicard';
 
 const CardMiddle = (props) => {
 
