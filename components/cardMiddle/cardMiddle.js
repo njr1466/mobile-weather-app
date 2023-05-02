@@ -3,7 +3,6 @@ import { View, Text } from 'react-native';
 import styles from './styles';
 import MiniCard from './miniCard';
 
-
 const CardMiddle = (props) => {
 
   var color = props.color;
