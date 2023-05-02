@@ -45,16 +45,20 @@ export default function App({ }) {
   }
 
   const handleCancel = () => {
-    setSearch('');
+    if (visibleModal) {
+      setVisibleModal(false);
+    } else {
+      setVisibleModal(true);
+    }
   };
 
   const handleOpen = () => {
-
     if (visible) {
       setVisible(false);
     } else {
       setVisible(true);
     }
+    setSearchText('');
     setVisibleModal(true);
     setFilteredCidades('');
   };
@@ -73,6 +77,7 @@ export default function App({ }) {
   };
 
   useEffect(() => {
+    setLoading(true);
     getResults(search).then((response) => {
       setResults(response);
       setForecast(response.forecast);
@@ -99,9 +104,9 @@ export default function App({ }) {
   return (
     <ScrollView>
       {loading ?
-        <View style={styles.loading}>
-          <ActivityIndicator size="large" color="#0000ff" />
-        </View> :
+          <View style={styles.loading}>
+          <ActivityIndicator size="large" color="#0000ff"  textContent={'Loading...'}/>
+        </View>:
         <View style={[styles.container, { backgroundColor: colorBack }]}  >
           <LinearGradient
             colors={['rgba(0,0,0,1)', 'transparent']}

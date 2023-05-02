@@ -9,6 +9,7 @@ const styles = StyleSheet.create({
       marginVertical: 0,
       width: "90%",
       flex: 1,
+      paddingBottom:0
      
     },
     title: {

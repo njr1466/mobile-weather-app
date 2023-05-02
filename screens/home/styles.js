@@ -5,6 +5,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
+    paddingBottom:40
   },
   container1: {
     flex: 1,
@@ -40,8 +41,12 @@ const styles = StyleSheet.create({
 
   },
   loading: {
-    alignContent: "center",
-    alignItems: "center"
+    flex: 1,
+    justifyContent: 'center',
+    textAlign: 'center',
+    paddingTop: '100%',
+    backgroundColor: '#ecf0f1',
+    padding: 8,
   },
   searchBar: {
     backgroundColor: 'transparent',
