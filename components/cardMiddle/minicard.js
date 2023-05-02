@@ -3,7 +3,6 @@ import {View, Text,Image } from 'react-native';
 import styles from './stylesMiniCard';
 
 const MiniCard = (props) => {
-  
   switch (props.imagem) {
     case "sunset":
       var imagem =  require('../../assets/sunset.png') ;
@@ -26,6 +25,5 @@ const MiniCard = (props) => {
     </View>
   );
 };
-
 
 export default MiniCard;
