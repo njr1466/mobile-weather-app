@@ -2,9 +2,9 @@
 
 # App Tempo
 
-Aplicativo desenvolvido em React Native(expo) para previsão do tempo, cujo projeto faz parte do processo seletivo realizado pelo NEES. Este processo visa o desenvolvimento de um app para previsão do tempo, de acordo com as imagens cedidas  pelo Figma. 
+Aplicativo desenvolvido em React Native(expo) para previsão do tempo. Este trabalho faz parte do processo seletivo realizado pelo NEES.  
 
-Foi necessário a realização de alguns ajustes para a exibição de informações, essa modificação é devido a falta de dados vindos da API, como por exemplo, os dados de horário e temperatura durante o decorrer do dia. Em minha percepção a ausência destes dados não permitiu ser fiel ao Wireframe disponibilizado, mas foram adicionados os horários do sunset e sunrise e suas respectivas imagens. 
+Foi necessário a realização de alguns ajustes para a exibição de algumas informações, devido a falta de dados vindos da API, como por exemplo, os dados de horário e temperatura durante o decorrer do dia. Em minha percepção a ausência destes dados não permitiu ser fiel completamente ao Wireframe disponibilizado, mas foram adicionados os horários do sunset e sunrise e suas respectivas imagens. 
 
 Inicialmente a API fornecida só estava trazendo informações da cidade de São Paulo, mas consegui utilizar outra api da mesma plataforma hgbrasil que retorna os dados através do nome da cidade:
 
